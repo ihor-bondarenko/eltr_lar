@@ -7,7 +7,7 @@ import App from './components/App'
 import router from './router'
 import vuexI18n from 'vuex-i18n';
 import VueResource from 'vue-resource';
-import {ipcRenderer} from './helpers/ipc-manager'
+//import {ipcRenderer} from './helpers/ipc-manager'
 Vue.use(Vuex)
 Vue.config.productionTip = false
 

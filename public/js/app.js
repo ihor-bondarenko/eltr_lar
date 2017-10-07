@@ -21341,7 +21341,7 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(56);
+module.exports = __webpack_require__(55);
 
 
 /***/ }),
@@ -21359,7 +21359,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_i18n__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vuex_i18n__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_resource__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_ipc_manager__ = __webpack_require__(55);
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 __webpack_require__(14);
@@ -21369,7 +21368,7 @@ __webpack_require__(14);
 
 
 
-
+//import {ipcRenderer} from './helpers/ipc-manager'
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
 
@@ -48497,16 +48496,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 /***/ }),
 /* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export ipcRenderer */
-var ipcRenderer = window.ipcRenderer;
-
-
-
-/***/ }),
-/* 56 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
