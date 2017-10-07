@@ -64,13 +64,13 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
+        <div class="d-flex flex-row full-height align-items-center justify-content-center">
+            <div class="content col-md-8 col-lg-3">
                 <div class="title m-b-md">
                     Trainer
                 </div>
                 @if (!Auth::check())
-                <div class="col-md-12">
+                <div class="">
                     <div class="panel panel-default">
                         <div class="panel-heading">Login</div>
 
@@ -79,9 +79,9 @@
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                    <label for="email" class="col-md-12 control-label">E-Mail Address</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                         @if ($errors->has('email'))
@@ -93,9 +93,9 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password" class="col-md-4 control-label">Password</label>
+                                    <label for="password" class="col-md-12 control-label">Password</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input id="password" type="password" class="form-control" name="password" required>
 
                                         @if ($errors->has('password'))
