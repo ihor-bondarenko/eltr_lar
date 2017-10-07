@@ -1,18 +1,35 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 require('./bootstrap');
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './components/App'
-import router from './router'
+import Vue from 'vue';
+import VueProgressBar from 'vue-progressbar';
+import Vuex from 'vuex';
+import App from './components/App';
+import router from './router';
 import vuexI18n from 'vuex-i18n';
 import VueResource from 'vue-resource';
 //import {ipcRenderer} from './helpers/ipc-manager'
-Vue.use(Vuex)
-Vue.config.productionTip = false
+Vue.use(Vuex);
+Vue.config.productionTip = false;
 
 Vue.use(VueResource);
 Vue.http.options.root = 'api/v1';
+
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options);
 
 const store = new Vuex.Store({
   state: {
