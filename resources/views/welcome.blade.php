@@ -21,7 +21,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 90vh;
             }
 
             .flex-center {
@@ -61,9 +61,27 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .trainer-navbar {
+              background-color: cadetblue;
+            }
         </style>
     </head>
     <body>
+      <nav class="navbar navbar-toggleable-md navbar-dark bg-inverse trainer-navbar">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
         <div class="d-flex flex-row full-height align-items-center justify-content-center">
             <div class="content col-md-8 col-lg-3">
                 <div class="title m-b-md">
