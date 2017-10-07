@@ -1,30 +1,19 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 require('./bootstrap');
+import Vue from 'vue'
+import Vuex from 'vuex'
+import App from './components/App'
+import router from './router'
+import vuexI18n from 'vuex-i18n';
+import VueResource from 'vue-resource';
+import {ipcRenderer} from './helpers/ipc-manager'
+Vue.use(Vuex)
+Vue.config.productionTip = false
 
-window.Vue = require('vue');
-const App = require('./components/App');
-//const router = require('./router');
-import VueRouter from 'vue-router'
-
-const Vuex = require('vuex');
-const vuexI18n = require('vuex-i18n');
-const VueResource = require('vue-resource');
-//console.log(router);
-Vue.use(VueRouter)
-const routes = [
-  { path: '/foo', component: App },
-]
-const router = new VueRouter({
-  routes // short for `routes: routes`
-})
-/*Vue.use(Vuex);
 Vue.use(VueResource);
+Vue.http.options.root = 'api/v1';
+
 const store = new Vuex.Store({
   state: {
     printers: []
@@ -35,24 +24,27 @@ const store = new Vuex.Store({
       state.printers = list
     }
   }
-});
+})
 Vue.use(vuexI18n.plugin, store);
 const translationsEn = {
   'content': 'This is some {type} content'
 };
 
+// translations can be kept in separate files for each language
+// i.e. resources/i18n/de.json.
 const translationsDe = {
   'My nice title': 'Ein schöner Titel',
   'content': 'Dies ist ein toller Inhalt'
 };
 Vue.i18n.add('en', translationsEn);
 Vue.i18n.add('de', translationsDe);
-Vue.i18n.set('en');*/
-//Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
+// set the start locale to use
+Vue.i18n.set('en');
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
-  //store,
+  store,
   router,
   template: '<App/>',
   components: { App }
