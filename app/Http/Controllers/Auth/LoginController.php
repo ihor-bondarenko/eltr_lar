@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-
+use GuzzleHttp;
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -46,5 +47,48 @@ class LoginController extends Controller
     public function logout(){
       Auth::logout();
       return redirect()->route('startpage');
+    }
+
+    public function getLogin() {
+      $client = new GuzzleHttp\Client();
+        $res = $client->request('POST', 'https://einsatzv1.rucomm.com/api/auth/login', [
+          'username' => 'rs-ihor',
+          'password' => '#xCommandery'
+        ]);
+        $user = null;
+        if($res->getBody()->getContents()){
+          $users = \App\User::where('username', 'rs-ihor')->take(1)->get()->map(function($item) {
+        return $item['uuid'];
+      });//;
+          /*foreach ($users as $user) {//
+              $user = $user->uuid;
+          }*/
+          if($user){
+            //Auth::loginUsingId($user);
+              //return redirect('/');
+          }else{
+            return response()->json([
+                'error' => $users
+            ]);
+          }
+          /*if (Auth::attempt(['username' => 'rs-ihor'])) {
+            return redirect('/');
+          }else{
+
+          }*/
+        }
+    }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @return Response
+     */
+    public function authenticate()
+    {
+        if (Auth::attempt(['username' => $username, 'password' => $password])) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
     }
 }
