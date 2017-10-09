@@ -21422,13 +21422,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.i18n.add('de', translationsDe);
 // set the start locale to use
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.i18n.set('en');
 /* eslint-disable no-new */
-new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: '#app',
-  store: store,
-  router: __WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */],
-  template: '<App/>',
-  components: { App: __WEBPACK_IMPORTED_MODULE_3__components_App___default.a }
-});
+window.initVm = function () {
+  new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+    el: '#app',
+    store: store,
+    router: __WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */],
+    template: '<App/>',
+    components: { App: __WEBPACK_IMPORTED_MODULE_3__components_App___default.a }
+  });
+};
 
 /***/ }),
 /* 14 */

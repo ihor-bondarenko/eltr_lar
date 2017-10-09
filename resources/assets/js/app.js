@@ -59,10 +59,13 @@ Vue.i18n.add('de', translationsDe);
 // set the start locale to use
 Vue.i18n.set('en');
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  store,
-  router,
-  template: '<App/>',
-  components: { App }
-})
+window.initVm = function() {
+  new Vue({
+    el: '#app',
+    store,
+    router,
+    template: '<App/>',
+    components: { App }
+  })
+
+}
