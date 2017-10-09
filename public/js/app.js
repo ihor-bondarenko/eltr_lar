@@ -43036,12 +43036,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43072,54 +43066,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "app" } },
-    [
-      _c("vue-progress-bar"),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+  return _c("div", [_c("vue-progress-bar"), _vm._v(" "), _c("router-view")], 1)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass:
-          "navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse"
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "navbar-toggler navbar-toggler-right",
-            attrs: {
-              type: "button",
-              "data-toggle": "collapse",
-              "data-target": "#navbarsExampleDefault",
-              "aria-controls": "navbarsExampleDefault",
-              "aria-expanded": "false",
-              "aria-label": "Toggle navigation"
-            }
-          },
-          [_c("span", { staticClass: "navbar-toggler-icon" })]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-          _vm._v("Trainer")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -43137,8 +43086,8 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Hello__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Hello___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Hello__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Main__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Main___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Main__);
 
 
 
@@ -43146,10 +43095,11 @@ if (false) {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+  mode: 'history',
   routes: [{
     path: '/',
-    name: 'Hello',
-    component: __WEBPACK_IMPORTED_MODULE_2__components_Hello___default.a,
+    name: 'Main',
+    component: __WEBPACK_IMPORTED_MODULE_2__components_Main___default.a,
     props: function props() {
       return { listPrinters: '12213' };
     }
@@ -45685,7 +45635,7 @@ var __vue_template__ = __webpack_require__(52)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-63db1eb2"
+var __vue_scopeId__ = "data-v-d60102ee"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -45695,9 +45645,9 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/Hello.vue"
+Component.options.__file = "resources/assets/js/components/Main.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Hello.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Main.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -45706,9 +45656,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63db1eb2", Component.options)
+    hotAPI.createRecord("data-v-d60102ee", Component.options)
   } else {
-    hotAPI.reload("data-v-63db1eb2", Component.options)
+    hotAPI.reload("data-v-d60102ee", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45729,13 +45679,13 @@ var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(49)("3b8be3fc", content, false);
+var update = __webpack_require__(49)("312b98bd", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-63db1eb2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Hello.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-63db1eb2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Hello.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d60102ee\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d60102ee\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -45753,7 +45703,7 @@ exports = module.exports = __webpack_require__(48)(undefined);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-63db1eb2], h2[data-v-63db1eb2] {\n  font-weight: normal;\n}\nul[data-v-63db1eb2] {\n  list-style-type: none;\n  padding: 0;\n}\nli[data-v-63db1eb2] {\n  display: inline-block;\n  margin: 0 10px;\n}\na[data-v-63db1eb2] {\n  color: #42b983;\n}\n.print-button[data-v-63db1eb2] {\n  font-size: 48dp;\n}\n.print-button[data-v-63db1eb2]:hover {\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-d60102ee], h2[data-v-d60102ee] {\n  font-weight: normal;\n}\nul[data-v-d60102ee] {\n  list-style-type: none;\n  padding: 0;\n}\nli[data-v-d60102ee] {\n  display: inline-block;\n  margin: 0 10px;\n}\na[data-v-d60102ee] {\n  color: #42b983;\n}\n.print-button[data-v-d60102ee] {\n  font-size: 48dp;\n}\n.print-button[data-v-d60102ee]:hover {\n  cursor: pointer;\n}\n.trainer-module-select-card[data-v-d60102ee]:hover {\n  cursor: pointer;\n  opacity: 0.6;\n}\n.trainer-module-select-cards-block .card-text[data-v-d60102ee] {\n  font-size: 1.3rem;\n  font-weight: 400;\n}\n", ""]);
 
 // exports
 
@@ -46115,11 +46065,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'hello',
+  name: 'main',
   data: function data() {
     return {
       msg: 'Welcome to Trainer',
@@ -46151,73 +46112,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "jumbotron" }, [
-    _c("h1", [_vm._v(_vm._s(_vm.msg))]),
-    _vm._v(" "),
-    _c("label", { attrs: { for: "printerList" } }, [_vm._v("Printer")]),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.selectedPrinter,
-            expression: "selectedPrinter"
-          }
-        ],
-        staticClass: "custom-select",
-        attrs: { id: "printerList" },
-        on: {
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.selectedPrinter = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          }
-        }
-      },
-      [
-        _c("option", { attrs: { selected: "" } }, [_vm._v("-")]),
-        _vm._v(" "),
-        _vm._l(_vm.listPrinters, function(printer) {
-          return _c("option", { domProps: { value: printer.name } }, [
-            _vm._v(_vm._s(printer.name))
-          ])
-        })
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "i",
-      {
-        staticClass: "material-icons md-48 print-button",
-        on: { click: _vm.printAction }
-      },
-      [_vm._v("print")]
-    ),
-    _vm._v(" "),
-    _c("h1", [_vm._v(_vm._s(_vm._f("translate")("My nice title")))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.$t("content", { type: "nice" })))])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row trainer-module-select-cards-block" }, [
+      _c("div", { staticClass: "col-sm-6 trainer-module-select-card" }, [
+        _c("div", { staticClass: "card bg-light text-dark" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("blockquote", { staticClass: "card-blockquote" }, [
+              _c("span", { staticClass: "oi oi-browser" }),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [_vm._v("Trainer")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-6 trainer-module-select-card" }, [
+        _c("div", { staticClass: "card bg-light text-dark" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("blockquote", { staticClass: "card-blockquote" }, [
+              _c("span", { staticClass: "oi oi-monitor" }),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [_vm._v("Viewer")])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-63db1eb2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-d60102ee", module.exports)
   }
 }
 
