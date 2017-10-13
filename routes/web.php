@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-  if(Auth::check()){
+  if(Auth::check() && Laratrust::hasRole('administrator')){
     return view('trainer');
   }else{
     return view('main');
