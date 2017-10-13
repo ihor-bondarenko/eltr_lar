@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-class LoginController extends Controller
+use App\Api\Login as ApiLogin;
+use Illuminate\Http\Request;
+use Validator;
+class ApiLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -42,15 +45,41 @@ class LoginController extends Controller
     {
         return 'username';
     }
-    /**
-     * Handle an logout attempt.
-     *
-     * @return Response
-     */
-    public function logout(){
-      Auth::logout();
-      return redirect()->route('startpage');
+
+    public function apiLogin(ApiLogin $api, Request $request) {
+        try{
+          $validator = Validator::make($request->all(), [
+            'version_url' => 'required|unique:posts|max:255',
+            'username' => 'required|unique:posts|max:255',
+            'password' => 'required|unique:posts|max:255',
+          ]);
+          if ($validator->fails()) {
+            return redirect('/')
+                        ->withErrors($validator)
+                        ->withInput();
+          }
+          $res = $api->loginCommander();
+          $userId = null;
+          if($res){
+            $userId = \App\User::where('username', 'rs-ihor')->take(1)->get()->map(function($item) {
+              return $item['uuid'];
+            });
+            if($userId){
+              Auth::loginUsingId($userId);
+                return redirect('/');
+            }else{
+              return response()->json([
+                  'error' => $user
+              ]);
+            }
+          }
+        }catch(Exception $e){
+        }
+        return response()->json([
+            'error' => 'error response from API'
+        ]);
     }
+
     /**
      * Handle an authentication attempt.
      *

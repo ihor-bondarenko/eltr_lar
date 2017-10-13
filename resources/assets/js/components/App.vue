@@ -1,13 +1,14 @@
 <template>
-  <div>
-  <vue-progress-bar></vue-progress-bar>
-    <router-view></router-view>
+  <div class="d-flex flex-row full-height align-items-center justify-content-center">
+      <div class="content col-md-8 col-lg-3"></div>
+        <vue-progress-bar></vue-progress-bar>
+        <router-view></router-view>
+      </div>
   </div>
 </template>
 
 <script>
 import { EventBus } from '../helpers/event-bus.js'
-import jQuery from 'jquery'
 
 export default {
   name: 'app',
@@ -16,14 +17,7 @@ export default {
         printers: []
     }
   },
-  mounted: function () {
-  console.log(this.$Progress);
-  this.$Progress.start()
-    EventBus.$on('test', function (printer) {
-      console.log(jQuery)
-        console.log(printer)
-    })
-  },
+  mounted: function () {},
   computed: {}
 }
 </script>

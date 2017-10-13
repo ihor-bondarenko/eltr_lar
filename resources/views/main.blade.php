@@ -22,7 +22,7 @@
             }
 
             .full-height {
-                height: 90vh;
+                height: 100vh;
             }
 
             .flex-center {
@@ -71,40 +71,66 @@
               width: 16px;
               height: 16px;
             }
+
+            .trainer-module-select-card .text-dark {
+                font-weight: 500;
+            }
+            .trainer-module-select-card:hover {
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-light trainer-navbar navbar-toggleable-md">
-        <a class="navbar-brand" href="/">Menu</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              @if (Auth::check())
-              <a class="nav-link" href="{{ route('logout') }}">
-                Logout <span class="sr-only">(current)</span>
-                <span class="oi oi-account-logout"></span>
-              </a>
-              @endif
-            </li>
-          </ul>
-        </div>
-       </nav>
-        <div class="d-flex flex-row full-height align-items-center justify-content-center">
-            <div class="content col-md-8 col-lg-3">
+      <div id="app">
+        <nav-component :logout-url='@json(route("logout"))' :auth-check='@json(Auth::check())' :login-url='@json(route("login"))'></nav-component>
+        @if (Auth::guest())
+          <run-list-component :auth-check='@json(Auth::check())' :login-url='@json(route("login"))'></run-list-component>
+        @endif
+      </div>
+      <!--  <div class2="-d-flex -flex-row -full-height -align-items-center -justify-content-center" style="display: none">
+            <div class="-content col-md-8 col-lg-3">
                 @if (!Auth::check())
                 <div class="title m-b-md">
                     Trainer
                 </div>
-                <div class="">
+                <div>
+                    <div class="row trainer-module-select-cards-block">
+                       <div class="col-sm-4 trainer-module-select-card">
+                         <div class="card bg-light text-dark">
+                           <div class="card-body">
+                              <blockquote class="card-blockquote">
+                                <span class="oi oi-account-login"></span>
+                                <p class="card-text">Direct Login</p>
+                              </blockquote>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-sm-4 trainer-module-select-card">
+                         <div class="card bg-light text-dark">
+                               <div class="card-body">
+                                 <blockquote class="card-blockquote">
+                                   <span class="oi oi-account-login"></span>
+                                   <p class="card-text">Comander login</p>
+                                 </blockquote>
+                               </div>
+                         </div>
+                       </div>
+                       <div class="col-sm-4 trainer-module-select-card">
+                         <div class="card bg-light text-dark">
+                               <div class="card-body">
+                                 <blockquote class="card-blockquote">
+                                   <span class="oi oi-account-login"></span>
+                                   <p class="card-text">Login with password</p>
+                                 </blockquote>
+                               </div>
+                         </div>
+                       </div>
+                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">Login</div>
                         <div class="panel-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
-
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="col-md-4 control-label">Username</label>
                                     <div class="col-md-12">
@@ -142,10 +168,10 @@
                     </div>
                 </div>
                 @else
-                <div class="" id="app"></div>
+                <div id="app"></div>
                 @endif
             </div>
-        </div>
+        </div> -->
         <!-- Scripts -->
         <script src="{{ asset('js/manifest.js') }}"></script>
         <script src="{{ asset('js/vendor.js') }}"></script>

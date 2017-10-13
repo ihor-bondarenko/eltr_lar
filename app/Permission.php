@@ -6,5 +6,7 @@ use Laratrust\Models\LaratrustPermission;
 
 class Permission extends LaratrustPermission
 {
-    //
+  protected $casts = [
+    'user_id' => 'string'
+  ];
 }

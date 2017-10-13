@@ -38,8 +38,7 @@
       <div class="panel panel-default">
           <div class="panel-heading">Login</div>
           <div class="panel-body">
-              <form class="form-horizontal" method="POST" :action="loginUrl">
-                <input type="hidden" :value="csrf_token" name="_token">
+              <form class="form-horizontal" method="POST" action="">
                   <div class="form-group">
                       <label for="email" class="col-md-4 control-label">Username</label>
                       <div class="col-md-12">
@@ -70,22 +69,16 @@
 import { EventBus } from '../helpers/event-bus.js'
 
 export default {
-  name: 'appLogin',
-  props: ['loginUrl'],
+  name: 'appViewerLogin',
   data () {
     return {
       msg: 'Welcome to Trainer Login'
     }
   },
   mounted: function () {
-    console.log('hello login module');
-    console.log(this.$store.state.csrf_token)
+    console.log('hello login module')
   },
-  computed: {
-    csrf_token() {
-      return this.$store.state.csrf_token;
-    }
-  },
+  computed: {},
   methods: {}
 }
 </script>

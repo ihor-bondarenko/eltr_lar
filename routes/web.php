@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  if(Auth::check()){
+    return view('trainer');
+  }else{
+    return view('main');
+  }
 })->name('startpage');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/trainer', 'TrainerController@index')->name('trainer');
+//Route::get('/viewer', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/get-login', 'Auth\LoginController@getLogin');
+Route::get('/api-login', 'Auth\ApiLoginController@apiLogin');
