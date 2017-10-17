@@ -43846,7 +43846,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43882,7 +43882,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'appNav',
-  props: ['logoutUrl', 'authCheck', 'loginUrl'],
+  props: [],
   data: function data() {
     return {
       msg: 'Welcome to Nav module'
@@ -43891,6 +43891,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   mounted: function mounted() {
     console.log(this.msg);
+  },
+  computed: {
+    logoutUrl: function logoutUrl() {
+      return this.$store.state.appStateData.logoutUrl;
+    },
+    authCheck: function authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    loginUrl: function loginUrl() {
+      return this.$store.state.appStateData.loginUrl;
+    }
   }
 });
 
@@ -44058,7 +44069,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44098,7 +44109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'appRunList',
-  props: ['authCheck', 'loginUrl', 'trainerUrl', 'viewerUrl', 'appPermissions', 'appAllPermissions'],
+  props: [],
   data: function data() {
     return {};
   },
@@ -44114,6 +44125,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   computed: {
     permissionTrainer: function permissionTrainer() {
       return this.authCheck && this.appPermissions['create-trainer'] || !this.authCheck;
+    },
+    authCheck: function authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    trainerUrl: function trainerUrl() {
+      return this.$store.state.appStateData.trainerUrl;
+    },
+    viewerUrl: function viewerUrl() {
+      return this.$store.state.appStateData.viewerUrl;
+    },
+    appPermissions: function appPermissions() {
+      return this.$store.state.appStateData.appPermissions;
     }
   }
 });

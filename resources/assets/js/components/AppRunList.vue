@@ -26,7 +26,7 @@ import { EventBus } from '../helpers/event-bus.js'
 
 export default {
   name: 'appRunList',
-  props: ['authCheck', 'loginUrl', 'trainerUrl', 'viewerUrl', 'appPermissions', 'appAllPermissions'],
+  props: [],
   data () {
     return {}
   },
@@ -39,8 +39,20 @@ export default {
     }
   },
   computed: {
-    permissionTrainer: function() {
+    permissionTrainer() {
       return (this.authCheck && this.appPermissions['create-trainer']) || !this.authCheck;
+    },
+    authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    trainerUrl(){
+      return this.$store.state.appStateData.trainerUrl;
+    },
+    viewerUrl(){
+      return this.$store.state.appStateData.viewerUrl;
+    },
+    appPermissions(){
+      return this.$store.state.appStateData.appPermissions;
     }
   }
 }

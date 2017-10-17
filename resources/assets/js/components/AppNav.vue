@@ -22,7 +22,7 @@ import { EventBus } from '../helpers/event-bus.js'
 
 export default {
   name: 'appNav',
-  props: ['logoutUrl', 'authCheck', 'loginUrl'],
+  props: [],
   data () {
     return {
       msg: 'Welcome to Nav module'
@@ -30,6 +30,17 @@ export default {
   },
   mounted: function(){
     console.log(this.msg);
+  },
+  computed: {
+    logoutUrl() {
+      return this.$store.state.appStateData.logoutUrl;
+    },
+    authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    loginUrl() {
+      return this.$store.state.appStateData.loginUrl;
+    }
   }
 }
 </script>

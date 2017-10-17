@@ -92,7 +92,7 @@
         :logout-url='@json(route("logout"))'
         :auth-check='@json(Auth::check())'
         :login-url='@json(route("login"))'
-        :app-permissions='@json(["create-trainer" => \Laratrust::can("create-trainer")])'
+        :app-permissions='@json(["create-trainer" => \Laratrust::can("create-trainer"), "create-viewer" => \Laratrust::can("create-viewer")])'
         :trainer-url='@json(route("trainer"))'
         :viewer-url='@json(route("viewer"))'></app>
       </div>
