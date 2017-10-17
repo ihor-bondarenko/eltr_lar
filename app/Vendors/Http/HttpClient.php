@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Vendors\Http;
 
 use \GuzzleHttp\Client as Http;
 

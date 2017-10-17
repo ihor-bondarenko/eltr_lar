@@ -2,23 +2,18 @@
 
 return [
     'role_structure' => [
-        'superadministrator' => [
-            'users' => 'c,r,u,d',
+        'administrator' => [
+            'trainer' => 'c,r,u,d',
+            'viewer' => 'c,r,u,d',
             'acl' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'administrator' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+        'trainer' => [
+            'trainer' => 'c,r,u,d'
         ],
-        'user' => [
-            'profile' => 'r,u'
-        ],
-    ],
-    'permission_structure' => [
-        'cru_user' => [
-            'profile' => 'c,r,u'
-        ],
+        'viewer' => [
+            'viewer' => 'c,r,u,d'
+        ]
     ],
     'permissions_map' => [
         'c' => 'create',

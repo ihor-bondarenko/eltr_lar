@@ -65,7 +65,7 @@ Vue.component('run-list-component', AppRunList);
 const trainerApp = new Vue({
   el: '#app',
   store,
-  router,
+  router
 //  template: '<App/>',
   //components: { App }
 })

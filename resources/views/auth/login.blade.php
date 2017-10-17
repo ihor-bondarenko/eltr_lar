@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.trainer')
 
 @section('content')
 <login-component :login-url='@json(route("login"))'>

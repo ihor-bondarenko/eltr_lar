@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Api;
+namespace App\Vendors\Api;
 
 use App\User;
-use App\Helpers\HttpClient;
+use App\Vendors\Http\HttpClient;
 
-class Login
+class Commander
 {
     /**
      * The Http client implementation.
@@ -23,7 +23,8 @@ class Login
         $this->http = $http;
     }
 
-    public function loginCommander(string $url, array $params = []){
+    public function login(string $url, array $params = [])
+    {
       $res = $this->http->post($url, $params);
       return $res;
     }

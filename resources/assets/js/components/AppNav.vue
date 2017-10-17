@@ -28,9 +28,7 @@ export default {
       msg: 'Welcome to Nav module'
     }
   },
-  mounted: function(){
-    console.log(this.authCheck);
-  }
+  mounted: function(){}
 }
 </script>
 

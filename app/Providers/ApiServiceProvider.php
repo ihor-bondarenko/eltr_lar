@@ -23,6 +23,6 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      $this->app->bind('App\Helpers\HttpClient');
+      $this->app->bind('App\Vendors\Http\HttpClient');
     }
 }
