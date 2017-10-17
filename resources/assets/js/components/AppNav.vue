@@ -28,7 +28,9 @@ export default {
       msg: 'Welcome to Nav module'
     }
   },
-  mounted: function(){}
+  mounted: function(){
+    console.log(this.msg);
+  }
 }
 </script>
 

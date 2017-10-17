@@ -26,7 +26,7 @@ import { EventBus } from '../helpers/event-bus.js'
 
 export default {
   name: 'appRunList',
-  props: ['authCheck', 'loginUrl', 'trainerUrl', 'viewerUrl', 'appPermissions'],
+  props: ['authCheck', 'loginUrl', 'trainerUrl', 'viewerUrl', 'appPermissions', 'appAllPermissions'],
   data () {
     return {}
   },

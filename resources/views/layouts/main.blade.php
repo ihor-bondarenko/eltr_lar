@@ -81,9 +81,20 @@
         </style>
     </head>
     <body>
+      <template id="content-template">
+        <div>
+          <nav-component></nav-component>
+          @yield('content')
+        </div>
+      </template>
       <div id="app">
-        <nav-component :logout-url='@json(route("logout"))' :auth-check='@json(Auth::check())' :login-url='@json(route("login"))'></nav-component>
-        @yield('content')
+        <app
+        :logout-url='@json(route("logout"))'
+        :auth-check='@json(Auth::check())'
+        :login-url='@json(route("login"))'
+        :app-permissions='@json(["create-trainer" => \Laratrust::can("create-trainer")])'
+        :trainer-url='@json(route("trainer"))'
+        :viewer-url='@json(route("viewer"))'></app>
       </div>
         <!-- Scripts -->
         <script src="{{ asset('js/manifest.js') }}"></script>

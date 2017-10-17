@@ -37,13 +37,12 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 
 const store = new Vuex.Store({
   state: {
-    "printers": [],
+    "appStateData": {},
     "csrf_token": token.content ? token.content : ''
   },
   mutations: {
-    setPrinterList (state, list) {
-      console.log(list)
-      state.printers = list
+    setAppStateData (state, list) {
+      state.appStateData = list
     }
   }
 })
@@ -65,9 +64,9 @@ Vue.component('run-list-component', AppRunList);
 const trainerApp = new Vue({
   el: '#app',
   store,
-  router
-//  template: '<App/>',
-  //components: { App }
+  router,
+  //template: '<App/>',
+  components: { App }
 })
 
 window.initVm = function() {
