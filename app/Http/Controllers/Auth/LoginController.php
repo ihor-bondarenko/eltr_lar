@@ -50,7 +50,8 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function logout(){
+    public function logout(Request $request){
+      $request->session()->forget('commander_token');
       Auth::logout();
       return redirect()->route('startpage');
     }
@@ -77,7 +78,7 @@ class LoginController extends Controller
             });
             if($userId){
               Auth::loginUsingId($userId);
-              $request->session()->push('user.commander_token', $res['token']);
+              $request->session()->put('commander_token', $res['token']);
             }
           }
           return response()->json($res);
