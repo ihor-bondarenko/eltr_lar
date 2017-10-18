@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Api\Login as ApiLogin;
+use App\Vendors\Api\Commander as CommanderApiLogin;
 use Illuminate\Http\Request;
 use Validator;
 class ApiLoginController extends Controller
@@ -46,9 +46,13 @@ class ApiLoginController extends Controller
         return 'username';
     }
 
-    public function apiLogin(ApiLogin $api, Request $request) {
-        try{
-          $validator = Validator::make($request->all(), [
+    public function commanderApiLogin(CommanderApiLogin $api, Request $request) {
+          $request->validate([
+            'version_url' => 'required|max:255',
+            'username' => 'required|max:255',
+            'password' => 'required|max:255',
+          ]);
+          /*$validator = Validator::make($request->all(), [
             'version_url' => 'required|unique:posts|max:255',
             'username' => 'required|unique:posts|max:255',
             'password' => 'required|unique:posts|max:255',
@@ -72,9 +76,8 @@ class ApiLoginController extends Controller
                   'error' => $user
               ]);
             }
-          }
-        }catch(Exception $e){
-        }
+          }*/
+
         return response()->json([
             'error' => 'error response from API'
         ]);

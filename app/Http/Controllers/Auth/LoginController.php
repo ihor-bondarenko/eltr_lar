@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Vendors\Api\Commander as CommanderApiLogin;
+use Illuminate\Http\Request;
+use Validator;
 class LoginController extends Controller
 {
     /*
@@ -62,5 +65,21 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('/');
         }
+    }
+    public function commanderApiLogin(CommanderApiLogin $api, Request $request) {
+          $request->validate([
+            'version_uuid' => 'required|max:255'
+          ]);
+          $res = $api->login($request->input('version_url'), $request->all());
+          if($res['statusCode'] == 200 && $res['token']) {
+            $userId = \App\User::where('username', 'administrator')->take(1)->get()->map(function($item) {
+              return $item['uuid'];
+            });
+            if($userId){
+              Auth::loginUsingId($userId);
+              $request->session()->push('user.commander_token', $res['token']);
+            }
+          }
+          return response()->json($res);
     }
 }

@@ -14,12 +14,12 @@
              </div>
            </div>
          </div>
-         <div class="col-sm-4 trainer-module-select-card">
+         <div class="col-sm-4 trainer-module-select-card" v-on:click="commanderApiLogin">
            <div class="card bg-light text-dark">
                  <div class="card-body">
                    <blockquote class="card-blockquote">
                      <span class="oi oi-account-login"></span>
-                     <p class="card-text">Comander login</p>
+                     <p class="card-text">Commander login</p>
                    </blockquote>
                  </div>
            </div>
@@ -77,16 +77,31 @@ export default {
       msg: 'Welcome to Trainer Login'
     }
   },
-  mounted: function () {
-    console.log('hello login module');
-    console.log(this.$store.state.csrf_token)
-  },
+  mounted: function () {},
   computed: {
     csrf_token() {
       return this.$store.state.csrf_token;
     }
   },
-  methods: {}
+  methods: {
+    commanderApiLogin() {
+      window.axios.post('/commander-login', {
+        "username": '',
+        "version_url": 'http://10.0.0.147',
+        "password": "",
+        "imei": 'trainer',
+        "module-name": 'biometric_system',
+        "type" : '3',
+        "version_uuid": "123455"
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
 }
 </script>
 
