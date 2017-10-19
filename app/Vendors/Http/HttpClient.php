@@ -3,11 +3,11 @@
 namespace App\Vendors\Http;
 
 use \GuzzleHttp\Client as Http;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\Client;
+use \Psr\Http\Message\RequestInterface;
+use \Psr\Http\Message\ResponseInterface;
+use \GuzzleHttp\HandlerStack;
+use \GuzzleHttp\Handler\CurlHandler;
+use \GuzzleHttp\Promise;
 
 class HttpClient
 {
@@ -22,7 +22,8 @@ class HttpClient
         'strict'          => true,      // use "strict" RFC compliant redirects.
         'referer'         => true,      // add a Referer header
         'track_redirects' => true
-      ]
+      ],
+      'http_errors' => false
     ];
 
     /**
@@ -49,11 +50,26 @@ class HttpClient
 
     public function post(string $url, array $params = []){
       try{
-          $res = $this->http->request('POST', $url, array_merge($this->params, $params));
-          $bodyContent = $res->getBody()->getContents();
+          $promises = [
+              "commander_login" => $this->http->requestAsync('POST', $url, array_merge($this->params, $params))
+          ];
+          //$promise = $this->http->requestAsync('POST', $url, array_merge($this->params, $params));
+          /*$promise->then(
+              function (ResponseInterface $res) {
+                $bodyContent = $res->getBody()->getContents();
+                return [
+                  'content' => $bodyContent,
+                  'code' => $res->getStatusCode()
+                 ];
+              },
+              function (RequestException $e) {
+
+              }
+          );*/
+          $results = Promise\unwrap($promises);
           return [
-            'content' => $bodyContent,
-            'code' => $res->getStatusCode()
+            'content' => $results['commander_login']->getBody()->getContents(),
+            'code' => $results['commander_login']->getStatusCode()
            ];
       }catch(RequestException $e){
         if ($e->hasResponse()) {
