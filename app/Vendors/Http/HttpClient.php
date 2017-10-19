@@ -53,19 +53,6 @@ class HttpClient
           $promises = [
               "commander_login" => $this->http->requestAsync('POST', $url, array_merge($this->params, $params))
           ];
-          //$promise = $this->http->requestAsync('POST', $url, array_merge($this->params, $params));
-          /*$promise->then(
-              function (ResponseInterface $res) {
-                $bodyContent = $res->getBody()->getContents();
-                return [
-                  'content' => $bodyContent,
-                  'code' => $res->getStatusCode()
-                 ];
-              },
-              function (RequestException $e) {
-
-              }
-          );*/
           $results = Promise\unwrap($promises);
           return [
             'content' => $results['commander_login']->getBody()->getContents(),
