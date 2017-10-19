@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException as NotFoundHttpException;
+use GuzzleHttp\Exception\ConnectException as HttpConnectException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,6 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+    
       if($exception instanceof HttpException)
        {
          switch($exception->statusCode()){
@@ -55,6 +57,10 @@ class Handler extends ExceptionHandler
        } else if($exception instanceof NotFoundHttpException) {
           //return redirect()->route('startpage', []);
           return response()->view('errors.404', ['exception' => $exception], 404);
+       }else if ($exception instanceof HttpConnectException) {
+         if($request->ajax()){
+           return response()->json(['error' => $exception->getMessage()]);
+         }
        }
         return parent::render($request, $exception);
     }

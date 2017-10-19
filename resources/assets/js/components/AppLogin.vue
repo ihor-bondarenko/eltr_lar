@@ -86,9 +86,9 @@ export default {
   methods: {
     commanderApiLogin() {
       window.axios.post('/commander-login', {
-        "username": '',
-        "version_url": 'http://10.0.0.147',
-        "password": "",
+        "username": "rs-system",
+        "version_url": 'einsatzv1.rucomm.com',
+        "password": "pass",
         "imei": 'trainer',
         "module-name": 'biometric_system',
         "type" : '3',
@@ -130,6 +130,10 @@ a {
 }
 
 .print-button:hover {
+  cursor: pointer;
+}
+
+.trainer-module-select-card .card:hover {
   cursor: pointer;
 }
 </style>

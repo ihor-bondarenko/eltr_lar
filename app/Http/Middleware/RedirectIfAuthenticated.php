@@ -18,9 +18,13 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            if($request->ajax()){
+              return response()->json([])
+              ->header('Content-Type', 'application/json')
+              ->header('X-Header-Login-Redirect', $request->session()->get('url.intended', function(){ return '/'; }));
+            }
             return redirect('/');
         }
-
         return $next($request);
     }
 }

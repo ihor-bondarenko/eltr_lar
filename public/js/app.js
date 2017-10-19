@@ -11511,6 +11511,19 @@ try {
 window.axios = __webpack_require__(20);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.interceptors.response.use(function (response) {
+  // Do something with response data
+  console.log(response.headers['x-header-login-redirect']);
+  if (window._.has(response.headers, 'x-header-login-redirect')) {
+    window.location = response.headers['x-header-login-redirect'];
+  }
+  console.log(response);
+  return response;
+}, function (error) {
+  // Do something with response error
+  console.log(response);
+  return Promise.reject(error);
+});
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -43448,7 +43461,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-fd3921d0], h2[data-v-fd3921d0] {\n  font-weight: normal;\n}\nul[data-v-fd3921d0] {\n  list-style-type: none;\n  padding: 0;\n}\nli[data-v-fd3921d0] {\n  display: inline-block;\n  margin: 0 10px;\n}\na[data-v-fd3921d0] {\n  color: #42b983;\n}\n.print-button[data-v-fd3921d0] {\n  font-size: 48dp;\n}\n.print-button[data-v-fd3921d0]:hover {\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-fd3921d0], h2[data-v-fd3921d0] {\n  font-weight: normal;\n}\nul[data-v-fd3921d0] {\n  list-style-type: none;\n  padding: 0;\n}\nli[data-v-fd3921d0] {\n  display: inline-block;\n  margin: 0 10px;\n}\na[data-v-fd3921d0] {\n  color: #42b983;\n}\n.print-button[data-v-fd3921d0] {\n  font-size: 48dp;\n}\n.print-button[data-v-fd3921d0]:hover {\n  cursor: pointer;\n}\n.trainer-module-select-card .card[data-v-fd3921d0]:hover {\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -43582,9 +43595,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     commanderApiLogin: function commanderApiLogin() {
       window.axios.post('/commander-login', {
-        "username": '',
-        "version_url": 'http://10.0.0.147',
-        "password": "",
+        "username": "rs-system",
+        "version_url": 'einsatzv1.rucomm.com',
+        "password": "pass",
         "imei": 'trainer',
         "module-name": 'biometric_system',
         "type": '3',

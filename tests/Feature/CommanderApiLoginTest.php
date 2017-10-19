@@ -16,24 +16,21 @@ class CommanderApiLoginTest extends TestCase
 
     public function testBasicExample()
    {
-      // $response = $this->json('GET', '/test', []);
-    //  $user = User::where('username','administrator') -> first();
-
        $response = $this->json('POST', '/commander-login',
        [
-         "username" => '',
-         "version_url" => '10.0.0.147',
-         "password" => "",
+         "username" => 'rs-system',
+         "version_url" => 'https://einsatzv1.rucomm.com',
+         "password" => "#xCommandery",
          "imei" => 'trainer',
          "module-name" => 'biometric_system',
          "type" => '3',
-         "token" => md5(parse_url('http://10.0.0.147', PHP_URL_HOST)),
          "version_uuid" => "123456"
         ]);
 
        $response
            ->assertStatus(200)
            ->assertJson([])
-           ->assertJsonFragment(['token']);
+           ->assertJsonFragment(['token'])
+           ->assertJsonFragment(['status' => 1]);
    }
 }

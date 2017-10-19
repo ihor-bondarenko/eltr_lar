@@ -50,7 +50,7 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function logout(Request $request){
+    public function logout(Request $request) {
       $request->session()->forget('commander_token');
       Auth::logout();
       return redirect()->route('startpage');
@@ -67,6 +67,11 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
     }
+    /**
+     * Handle an Commander API authentication attempt.
+     *
+     * @return JSON Response
+     */
     public function commanderApiLogin(CommanderApiLogin $api, Request $request) {
           $request->validate([
             'version_uuid' => 'required|max:255'
@@ -79,6 +84,9 @@ class LoginController extends Controller
             if($userId){
               Auth::loginUsingId($userId);
               $request->session()->put('commander_token', $res['token']);
+              return response($res)
+              ->header('Content-Type', 'application/json')
+              ->header('X-Header-Login-Redirect', $request->session()->get('url.intended', function(){ return '/'; }));
             }
           }
           return response()->json($res);
