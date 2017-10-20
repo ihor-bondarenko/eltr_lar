@@ -99,8 +99,8 @@ export default {
   methods: {
     commanderApiLogin() {
       window.axios.post('/commander-login', {
-        "username": "rs-system",
-        "version_url": 'einsatzv1.rucomm.com',
+        "username": "",
+        "version_url": '',
         "password": "pass",
         "imei": 'trainer',
         "module-name": 'biometric_system',
