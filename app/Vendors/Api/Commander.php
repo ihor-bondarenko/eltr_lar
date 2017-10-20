@@ -36,14 +36,12 @@ class Commander
     {
       $params['token'] = $this->commanderToken($url);
       $res = $this->http->post($url . '/api/auth/login', ['form_params' => $params]);
-
       $resContent = (array) json_decode($res['content']);
-
       return [
-        'token' => isset($resContent['token']) ? $resContent['token'] : '',
-        'statusCode' => $res['code'],
-        'status' => isset($resContent['status']) ? $resContent['status'] : '',
-        'message' => isset($resContent['message']) ? $resContent['message'] : ''
+        'token' => $resContent['token'] ?? '',
+        'statusCode' => $res['code'] ?? 0,
+        'status' => $resContent['status'] ?? '',
+        'message' => $resContent['message'] ?? ''
       ];
     }
 }

@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-    
+
       if($exception instanceof HttpException)
        {
          switch($exception->statusCode()){

@@ -12,10 +12,10 @@
 */
 Route::get('/', 'MainController@index')->name('startpage');
 
-Route::group(['middleware' => ['permission:create-trainer']], function() {
+Route::group(['middleware' => ['login.trainer', 'permission:create-trainer']], function() {
     Route::get('/trainer', 'TrainerController@index')->name('trainer');
 });
-Route::group(['middleware' => ['permission:read-viewer']], function() {
+Route::group(['middleware' => ['login.viewer', 'permission:read-viewer']], function() {
     Route::get('/viewer', 'ViewerController@index')->name('viewer');
 });
 Auth::routes();
