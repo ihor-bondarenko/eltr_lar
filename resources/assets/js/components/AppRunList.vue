@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row full-height align-items-center justify-content-center">
+  <div class="d-flex flex-row content-full-height align-items-center justify-content-center">
     <div class="jumbotron">
       <div class="row trainer-module-select-cards-block">
          <div class="col-sm-12 col-lg-12 trainer-module-select-card mb-1" v-on:click="changeWindowLocation(trainerUrl)" v-if="permissionTrainer">

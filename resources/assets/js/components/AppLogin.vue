@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row full-height align-items-center justify-content-center">
+  <div class="d-flex flex-row content-full-height align-items-center justify-content-center">
       <trainer-login v-if="loginModule == 'trainer'"></trainer-login>
       <viewer-login  v-if="loginModule == 'viewer'"></viewer-login>
   </div>

@@ -25,6 +25,10 @@
                 height: 100vh;
             }
 
+            .content-full-height {
+                height: 90vh;
+            }
+
             .flex-center {
                 align-items: center;
                 display: flex;
@@ -46,7 +50,7 @@
             }
 
             .title {
-                font-size: 84px;
+                /*font-size: 84px;*/
             }
 
             .links > a {

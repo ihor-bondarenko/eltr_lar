@@ -43598,6 +43598,14 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_event_bus_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Trainer_Commander_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Trainer_Commander_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Trainer_Commander_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Trainer_Direct_vue__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Trainer_Direct_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Trainer_Direct_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Trainer_Password_vue__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Trainer_Password_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Trainer_Password_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Trainer_List_vue__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Trainer_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Trainer_List_vue__);
 //
 //
 //
@@ -43610,64 +43618,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+
+
 
 
 
@@ -43676,7 +43630,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: [],
   data: function data() {
     return {
-      msg: 'Welcome to Trainer Login'
+      msg: 'Welcome to Trainer Login',
+      loginView: ''
     };
   },
 
@@ -43700,8 +43655,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     commanderApiLogin: function commanderApiLogin() {
       window.axios.post('/commander-login', {
-        "username": "rs-system",
-        "version_url": 'einsatzv1.rucomm.com',
+        "username": "",
+        "version_url": '',
         "password": "pass",
         "imei": 'trainer',
         "module-name": 'biometric_system',
@@ -43712,7 +43667,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (error) {
         console.log(error);
       });
+    },
+    setLoginView: function setLoginView(view) {
+      this.loginView = view;
     }
+  },
+  components: {
+    CommanderLogin: __WEBPACK_IMPORTED_MODULE_1__Trainer_Commander_vue___default.a,
+    DirectLogin: __WEBPACK_IMPORTED_MODULE_2__Trainer_Direct_vue___default.a,
+    PasswordLogin: __WEBPACK_IMPORTED_MODULE_3__Trainer_Password_vue___default.a,
+    ListLogin: __WEBPACK_IMPORTED_MODULE_4__Trainer_List_vue___default.a
   }
 });
 
@@ -43724,180 +43688,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "d-flex flex-row full-height align-items-center justify-content-center"
-    },
-    [
-      _c("div", [
-        _c("div", { staticClass: "title m-b-md" }, [
-          _vm._v("\n        Trainer\n    ")
-        ]),
+  return _c("div", { staticClass: "col-12 col-lg-6 " }, [
+    _c("div", { staticClass: "title m-b-md" }, [
+      _vm._v("\n        Trainer Login\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c("list-login", { on: { changeLogin: _vm.setLoginView } }),
         _vm._v(" "),
-        _c("div", { staticClass: "row trainer-module-select-cards-block" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-sm-4 trainer-module-select-card",
-              on: { click: _vm.commanderApiLogin }
-            },
-            [_vm._m(1)]
-          ),
-          _vm._v(" "),
-          _vm._m(2)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [_vm._v("Login")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c(
-              "form",
-              {
-                staticClass: "form-horizontal",
-                attrs: { method: "POST", action: _vm.loginUrl }
-              },
-              [
-                _c("input", {
-                  attrs: { type: "hidden", name: "_token" },
-                  domProps: { value: _vm.csrf_token }
-                }),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5)
-              ]
-            )
-          ])
-        ])
-      ])
-    ]
-  )
+        _c(_vm.loginView, { tag: "component" })
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 trainer-module-select-card" }, [
-      _c("div", { staticClass: "card bg-light text-dark" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("blockquote", { staticClass: "card-blockquote" }, [
-            _c("span", { staticClass: "oi oi-account-login" }),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [_vm._v("Direct Login")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card bg-light text-dark" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("blockquote", { staticClass: "card-blockquote" }, [
-          _c("span", { staticClass: "oi oi-account-login" }),
-          _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [_vm._v("Commander login")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 trainer-module-select-card" }, [
-      _c("div", { staticClass: "card bg-light text-dark" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("blockquote", { staticClass: "card-blockquote" }, [
-            _c("span", { staticClass: "oi oi-account-login" }),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v("Login with password")
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        { staticClass: "col-md-4 control-label", attrs: { for: "email" } },
-        [_vm._v("Username")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "username",
-            type: "text",
-            name: "username",
-            value: "",
-            required: "",
-            autofocus: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        { staticClass: "col-md-12 control-label", attrs: { for: "password" } },
-        [_vm._v("Password")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "password",
-            type: "password",
-            name: "password",
-            required: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "col-md-8 col-md-offset-4" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [
-            _vm._v(
-              "\n                              Login\n                          "
-            )
-          ]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -44031,7 +43838,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "d-flex flex-row full-height align-items-center justify-content-center"
+        "d-flex flex-row content-full-height align-items-center justify-content-center"
     },
     [
       _vm.loginModule == "trainer" ? _c("trainer-login") : _vm._e(),
@@ -44443,7 +44250,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "d-flex flex-row full-height align-items-center justify-content-center"
+        "d-flex flex-row content-full-height align-items-center justify-content-center"
     },
     [
       _c("div", { staticClass: "jumbotron" }, [
@@ -49576,6 +49383,675 @@ if (typeof window !== 'undefined' && window.Vue) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Login/Trainer/Commander.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Commander.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-676033d8", Component.options)
+  } else {
+    hotAPI.reload("data-v-676033d8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_event_bus_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CommanderLogin',
+  props: [],
+  data: function data() {
+    return {
+      msg: 'Welcome to Trainer commander Login'
+    };
+  },
+
+  mounted: function mounted() {
+    console.log(this.msg);
+  },
+  computed: {
+    logoutUrl: function logoutUrl() {
+      return this.$store.state.appStateData.logoutUrl;
+    },
+    authCheck: function authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    loginUrl: function loginUrl() {
+      return this.$store.state.appStateData.loginUrl;
+    },
+    csrf_token: function csrf_token() {
+      return this.$store.state.csrf_token;
+    }
+  },
+  methods: {
+    commanderApiLogin: function commanderApiLogin() {}
+  }
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "d-flex flex-row align-items-center justify-content-center"
+    },
+    [_vm._v("\n  Commander login\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-676033d8", module.exports)
+  }
+}
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(88)
+/* template */
+var __vue_template__ = __webpack_require__(89)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Login/Trainer/Direct.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Direct.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b55e520e", Component.options)
+  } else {
+    hotAPI.reload("data-v-b55e520e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_event_bus_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'DirectLogin',
+  props: [],
+  data: function data() {
+    return {
+      msg: 'Welcome to Trainer direct Login'
+    };
+  },
+
+  mounted: function mounted() {
+    console.log(this.msg);
+  },
+  computed: {
+    logoutUrl: function logoutUrl() {
+      return this.$store.state.appStateData.logoutUrl;
+    },
+    authCheck: function authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    loginUrl: function loginUrl() {
+      return this.$store.state.appStateData.loginUrl;
+    },
+    csrf_token: function csrf_token() {
+      return this.$store.state.csrf_token;
+    }
+  },
+  methods: {
+    commanderApiLogin: function commanderApiLogin() {}
+  }
+});
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "d-flex flex-row align-items-center" }, [
+    _c("div", { staticClass: "panel panel-default p-2 col-md-12 col-xl-8" }, [
+      _c("div", { staticClass: "panel-heading" }, [_vm._v("Login")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel-body" }, [
+        _c(
+          "form",
+          {
+            staticClass: "form-horizontal",
+            attrs: { method: "POST", action: _vm.loginUrl }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf_token }
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2)
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "label",
+        { staticClass: "col-md-4 control-label", attrs: { for: "email" } },
+        [_vm._v("Username")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            id: "username",
+            type: "text",
+            name: "username",
+            value: "",
+            required: "",
+            autofocus: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "label",
+        { staticClass: "col-md-12 control-label", attrs: { for: "password" } },
+        [_vm._v("Password")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            id: "password",
+            type: "password",
+            name: "password",
+            required: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-md-8 col-md-offset-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("\n                          Login\n                      ")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b55e520e", module.exports)
+  }
+}
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(91)
+/* template */
+var __vue_template__ = __webpack_require__(92)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Login/Trainer/Password.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Password.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3c9e22aa", Component.options)
+  } else {
+    hotAPI.reload("data-v-3c9e22aa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_event_bus_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'PasswordLogin',
+  props: [],
+  data: function data() {
+    return {
+      msg: 'Welcome to Trainer password Login'
+    };
+  },
+
+  mounted: function mounted() {
+    console.log(this.msg);
+  },
+  computed: {
+    logoutUrl: function logoutUrl() {
+      return this.$store.state.appStateData.logoutUrl;
+    },
+    authCheck: function authCheck() {
+      return this.$store.state.appStateData.authCheck;
+    },
+    loginUrl: function loginUrl() {
+      return this.$store.state.appStateData.loginUrl;
+    },
+    csrf_token: function csrf_token() {
+      return this.$store.state.csrf_token;
+    }
+  },
+  methods: {
+    commanderApiLogin: function commanderApiLogin() {}
+  }
+});
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "d-flex flex-row align-items-center justify-content-center"
+    },
+    [_vm._v("\n  Password login\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3c9e22aa", module.exports)
+  }
+}
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(96)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(98)
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3bf931a4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Login/Trainer/List.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] List.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3bf931a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-3bf931a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_event_bus_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ListLogin',
+  props: [],
+  data: function data() {
+    return {
+      msg: 'Welcome to Trainer list Login',
+      list: {
+        'DirectLogin': { 'translate': 'Direct Login' },
+        'PasswordLogin': { 'translate': 'Login with password' },
+        'CommanderLogin': { 'translate': 'Commander login' }
+      }
+    };
+  },
+
+  mounted: function mounted() {
+    console.log(this.msg);
+  },
+  computed: {},
+  methods: {
+    setView: function setView(v) {
+      this.$emit('changeLogin', v);
+    }
+  }
+});
+
+/***/ }),
+/* 95 */,
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(97);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("4903f616", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bf931a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bf931a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.trainer-module-select-card[data-v-3bf931a4]{\n    flex: 1 0 auto;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex flex-column flex-md-row trainer-module-select-cards-block"
+    },
+    _vm._l(_vm.list, function(item, index) {
+      return _c(
+        "div",
+        {
+          staticClass: "trainer-module-select-card",
+          on: {
+            click: function($event) {
+              _vm.setView(index)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "card bg-light text-dark" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("blockquote", { staticClass: "card-blockquote" }, [
+                _c("span", { staticClass: "oi oi-account-login" }),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(item.translate))
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3bf931a4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

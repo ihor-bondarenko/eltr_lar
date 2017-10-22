@@ -1,82 +1,29 @@
 <template>
-  <div class="d-flex flex-row full-height align-items-center justify-content-center">
-    <div>
+  <div class="col-12 col-lg-6 ">
       <div class="title m-b-md">
-          Trainer
+          Trainer Login
       </div>
-        <div class="row trainer-module-select-cards-block">
-           <div class="col-sm-4 trainer-module-select-card">
-             <div class="card bg-light text-dark">
-               <div class="card-body">
-                  <blockquote class="card-blockquote">
-                    <span class="oi oi-account-login"></span>
-                    <p class="card-text">Direct Login</p>
-                  </blockquote>
-               </div>
-             </div>
-           </div>
-           <div class="col-sm-4 trainer-module-select-card" v-on:click="commanderApiLogin">
-             <div class="card bg-light text-dark">
-                   <div class="card-body">
-                     <blockquote class="card-blockquote">
-                       <span class="oi oi-account-login"></span>
-                       <p class="card-text">Commander login</p>
-                     </blockquote>
-                   </div>
-             </div>
-           </div>
-           <div class="col-sm-4 trainer-module-select-card">
-             <div class="card bg-light text-dark">
-                   <div class="card-body">
-                     <blockquote class="card-blockquote">
-                       <span class="oi oi-account-login"></span>
-                       <p class="card-text">Login with password</p>
-                     </blockquote>
-                   </div>
-             </div>
-           </div>
-         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">Login</div>
-            <div class="panel-body">
-                <form class="form-horizontal" method="POST" :action="loginUrl">
-                  <input type="hidden" :value="csrf_token" name="_token">
-                    <div class="form-group">
-                        <label for="email" class="col-md-4 control-label">Username</label>
-                        <div class="col-md-12">
-                            <input id="username" type="text" class="form-control" name="username" value="" required autofocus>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-md-12 control-label">Password</label>
-
-                        <div class="col-md-12">
-                            <input id="password" type="password" class="form-control" name="password" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Login
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+      <div>
+        <list-login v-on:changeLogin="setLoginView"></list-login>
+        <component v-bind:is="loginView"></component>
+      </div>
   </div>
 </template>
 
 <script>
 import { EventBus } from '../../helpers/event-bus.js'
+import CommanderLogin  from './Trainer/Commander.vue'
+import DirectLogin  from './Trainer/Direct.vue'
+import PasswordLogin  from './Trainer/Password.vue'
+import ListLogin  from './Trainer/List.vue'
 
 export default {
   name: 'TrainerLogin',
   props: [],
   data () {
     return {
-      msg: 'Welcome to Trainer Login'
+      msg: 'Welcome to Trainer Login',
+      loginView: ''
     }
   },
   mounted: function () {
@@ -113,7 +60,16 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+    },
+    setLoginView(view) {
+      this.loginView = view;
     }
+  },
+  components: {
+    CommanderLogin,
+    DirectLogin,
+    PasswordLogin,
+    ListLogin
   }
 }
 </script>
