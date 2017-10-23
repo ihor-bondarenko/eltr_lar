@@ -1,15 +1,8 @@
 <template>
-  <div class="d-flex flex-column flex-md-row trainer-module-select-cards-block">
-    <div class="trainer-module-select-card" v-for="(item, index) in list" v-on:click="setView(index)">
-      <div class="card bg-light text-dark">
-        <div class="card-body">
-           <blockquote class="card-blockquote">
-             <span class="oi oi-account-login"></span>
-             <p class="card-text">{{ item.translate }}</p>
-           </blockquote>
-        </div>
-      </div>
-    </div>
+  <div class="d-flex flex-column flex-md-row trainer-module-select-cards-block justify-content-around">
+      <b-btn type="button" class="btn btn-outline-info btn-select-login-module btn-lg mb-sm-2 mb-2" v-for="(item, index) in list" :key="index" v-on:click="setView(index)">
+        <span class="oi oi-account-login"></span> {{ item.keyword }}
+      </b-btn>
   </div>
 </template>
 
@@ -23,9 +16,9 @@ export default {
     return {
       msg: 'Welcome to Trainer list Login',
       list: {
-        'DirectLogin' : {'translate': 'Direct Login'},
-        'PasswordLogin': {'translate': 'Login with password'},
-        'CommanderLogin': {'translate': 'Commander login'}
+        'DirectLogin' : {'keyword': 'direct_login'},
+        'PasswordLogin': {'keyword': 'login_with_password'},
+        'CommanderLogin': {'keyword': 'commander_login'}
       }
     }
   },
@@ -44,5 +37,8 @@ export default {
 <style scoped>
   .trainer-module-select-card{
       flex: 1 0 auto;
+  }
+  .btn-select-login-module:hover {
+    cursor: pointer;
   }
 </style>

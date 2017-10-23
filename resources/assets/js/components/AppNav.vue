@@ -1,7 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light trainer-navbar navbar-toggleable-md">
-    <a class="navbar-brand" href="/">Menu</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <b-navbar toggleable="sm" class="navbar navbar-expand-lg navbar-light trainer-navbar">
+    <b-nav-toggle target="navbarNav"></b-nav-toggle>
+    <b-navbar-brand href="/">menu</b-navbar-brand>
+    <b-collapse is-nav id="navbarNav">
+      <b-nav is-nav-bar class="ml-auto">
+        <b-button size="sm" class="my-2 my-sm-0" type="button" v-if="authCheck" :href="logoutUrl" variant="warning">
+          Logout <span class="sr-only">(current)</span>
+          <span class="oi oi-account-logout"></span>
+        </b-button>
+      </b-nav>
+    </b-collapse>
+    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -13,8 +22,8 @@
           </a>
         </li>
       </ul>
-    </div>
-   </nav>
+    </div>-->
+   </b-navbar>
 </template>
 
 <script>

@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 require('./bootstrap');
+import 'babel-polyfill';
 import Vue from 'vue';
 import VueProgressBar from 'vue-progressbar';
 import Vuex from 'vuex';
@@ -11,6 +12,8 @@ import AppRunList from './components/AppRunList';
 import router from './router';
 import vuexI18n from 'vuex-i18n';
 import VueResource from 'vue-resource';
+import BootstrapVue from 'bootstrap-vue';
+Vue.use(BootstrapVue);
 Vue.use(Vuex);
 Vue.config.productionTip = false;
 

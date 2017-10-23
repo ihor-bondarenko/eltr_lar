@@ -1,8 +1,6 @@
 <template>
-  <div class="d-flex flex-row align-items-center">
-    <div class="panel panel-default p-2 col-md-12 col-xl-8">
-        <div class="panel-heading">Login</div>
-        <div class="panel-body">
+  <div class="d-flex flex-row align-items-center justify-content-center">
+    <div class="form-group p-2 col-md-12 col-xl-8">
             <form class="form-horizontal" method="POST" :action="loginUrl">
               <input type="hidden" :value="csrf_token" name="_token">
                 <div class="form-group">
@@ -26,7 +24,6 @@
                     </div>
                 </div>
             </form>
-        </div>
     </div>
   </div>
 </template>

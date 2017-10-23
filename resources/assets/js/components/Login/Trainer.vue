@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 col-lg-6 ">
       <div class="title m-b-md">
-          Trainer Login
+          <h1>Trainer Login</h1>
       </div>
       <div>
         <list-login v-on:changeLogin="setLoginView"></list-login>
