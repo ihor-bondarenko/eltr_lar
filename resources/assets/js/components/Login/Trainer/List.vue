@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex flex-column flex-md-row trainer-module-select-cards-block justify-content-around">
+  <div class="d-flex flex-column flex-lg-row trainer-module-select-cards-block justify-content-around">
       <b-btn type="button" class="btn btn-outline-info btn-select-login-module btn-lg mb-sm-2 mb-2" v-for="(item, index) in list" :key="index" v-on:click="setView(index)">
-        <span class="oi oi-account-login"></span> {{ item.keyword }}
+        <span class="oi oi-account-login"></span> <span>{{ $t(item.keyword) }}</span>
       </b-btn>
   </div>
 </template>
@@ -16,9 +16,9 @@ export default {
     return {
       msg: 'Welcome to Trainer list Login',
       list: {
-        'DirectLogin' : {'keyword': 'direct_login'},
-        'PasswordLogin': {'keyword': 'login_with_password'},
-        'CommanderLogin': {'keyword': 'commander_login'}
+        'DirectLogin' : {'keyword': 'trainer_tr_direct_login_btn'},
+        'PasswordLogin': {'keyword': 'trainer_tr_login_with_password_btn'},
+        'CommanderLogin': {'keyword': 'trainer_tr_commander_login_btn'}
       }
     }
   },

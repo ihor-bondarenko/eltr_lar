@@ -5,7 +5,7 @@
          <div class="col-sm-12 col-lg-12 trainer-module-select-card mb-1" v-on:click="changeWindowLocation(trainerUrl)" v-if="permissionTrainer">
            <div class="card bg-light text-dark">
              <div class="card-body">
-                  <p class="card-text text-center"><span class="oi oi-book"></span> <span class="text-dark">Trainer</span></p>
+                  <p class="card-text text-center"><span class="oi oi-book"></span> <span class="text-dark">{{ $t('trainer_tr_trainer_title') }} </span></p>
              </div>
            </div>
          </div>
@@ -30,9 +30,7 @@ export default {
   data () {
     return {}
   },
-  mounted: function(){
-    console.log(this.appPermissions)
-  },
+  mounted: function(){},
   methods: {
     changeWindowLocation(url){
       window.location = url;

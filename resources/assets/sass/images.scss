@@ -1,0 +1,11 @@
+$icons-path: '../images/' !default;
+
+.current-locale-en {
+  background-image: url('#{$icons-path}locale_en.png');
+    background-repeat: no-repeat;
+}
+
+.current-locale-de {
+  background-image: url('#{$icons-path}locale_de.png');
+  background-repeat: no-repeat;
+}

@@ -10436,3 +10436,19 @@ table.b-table[aria-busy=true] {
   opacity: .6;
 }
 
+.current-locale-en {
+  background-image: url(/images/locale_en.png?99f4dffe40e738ddc51b51468dd47bd2);
+  background-repeat: no-repeat;
+}
+
+.current-locale-de {
+  background-image: url(/images/locale_de.png?4cc72f6a8acf900eac60786181106537);
+  background-repeat: no-repeat;
+}
+
+.current-locale-btn {
+  display: inline-block;
+  width: 120px;
+  height: 30px;
+}
+

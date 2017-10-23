@@ -10,4 +10,11 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/nprogress/nprogress";
 @import "./open-iconic-bootstrap";
-@import "node_modules/bootstrap-vue/dist/bootstrap-vue"
+@import "node_modules/bootstrap-vue/dist/bootstrap-vue";
+@import "./images";
+
+.current-locale-btn {
+  display: inline-block;
+  width: 120px;
+  height: 30px;
+}
