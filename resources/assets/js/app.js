@@ -10,20 +10,21 @@ import AppLogin from './components/AppLogin';
 import AppNav from './components/AppNav';
 import AppRunList from './components/AppRunList';
 //import router from './router';
-import vuexI18n from 'vuex-i18n';
-import VueI18n from 'vue-i18n'
+//import vuexI18n from 'vuex-i18n';
+//import VueI18n from 'vue-i18n'
 import VueResource from 'vue-resource';
 import BootstrapVue from 'bootstrap-vue';
 import VueLocalStorage from 'vue-ls';
+import { TrainerI18n, i18n } from './helpers/i18n';
+//const i18n = TrainerI18n.i18n;
+let token = document.head.querySelector('meta[name="csrf-token"]');
+//console.log(i18n);
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
-Vue.use(VueI18n);
-Vue.use(VueLocalStorage, {
-    namespace: 'trainerls__'
-});
-Vue.config.productionTip = false;
-
+//Vue.use(VueI18n);
 Vue.use(VueResource);
+
+Vue.config.productionTip = false;
 Vue.http.options.root = 'api/v1';
 
 const options = {
@@ -42,47 +43,14 @@ const options = {
 
 Vue.use(VueProgressBar, options);
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
-/*Vue.use(vuexI18n.plugin, store);
-const translationsEn = {
-  'content': 'This is some {type} content'
-};
-const translationsDe = {
-  'My nice title': 'Ein schöner Titel',
-  'content': 'Dies ist ein toller Inhalt'
-};
-Vue.i18n.add('en', translationsEn);
-Vue.i18n.add('de', translationsDe);
-Vue.i18n.set('en');
-*/
+/*const i18n = new VueI18n({
+  locale: Vue.ls.get('currentLocale', 'en'),
+  messages,
+});*/
 
-const translationsEn = {
-  'trainer_tr_menu_title': 'Menu EN',
-  'trainer_tr_trainer_title': 'Trainer',
-  'trainer_tr_logout_title': 'Logout EN',
-  'trainer_tr_selected_language': 'English',
-  'trainer_tr_direct_login_btn': 'Direct login En',
-  'trainer_tr_login_with_password_btn': 'Login with password En',
-  'trainer_tr_commander_login_btn': 'Login with Commander API En'
-};
-const translationsDe = {
-  'trainer_tr_menu_title': 'Menu DE',
-  'trainer_tr_trainer_title': 'Trainer2',
-  'trainer_tr_logout_title': 'Logout DE',
-  'trainer_tr_selected_language': 'Deutsch',
-  'trainer_tr_direct_login_btn': 'Direct login De',
-  'trainer_tr_login_with_password_btn': 'Login with password De',
-  'trainer_tr_commander_login_btn': 'Login with Commander API De'
-};
-
-const messages = {
-  en : translationsEn,
-  de: translationsDe
-}
-const i18n = new VueI18n({
-  locale: Vue.ls.get('currentLocale', 'en'), // set locale
-  messages, // set locale messages
-});
+TrainerI18n.getTranslation(Vue.ls.get('currentLocale', 'en')).then(function(translations){
+  i18n.setLocaleMessage(Vue.ls.get('currentLocale', 'en'), translations);
+}).catch(function(error){});
 
 const store = new Vuex.Store({
   state: {
@@ -100,21 +68,25 @@ const store = new Vuex.Store({
       state.currentLocale = locale;
       Vue.ls.set('currentLocale', state.currentLocale);
     }
+  },
+  actions: {
+    setCurrentLocale(context, locale) {
+      TrainerI18n.getTranslation(locale).then(function(translations){
+        i18n.setLocaleMessage(locale, translations);
+        context.commit('setCurrentLocale', locale);
+      }).catch(function(error){});
+    }
   }
 })
 
 Vue.component('login-component', AppLogin);
 Vue.component('nav-component', AppNav);
 Vue.component('run-list-component', AppRunList);
+
 const trainerApp = new Vue({
   el: '#app',
   store,
-  //router,
   i18n,
-  //template: '<App/>',
-  components: { App }
-})
-
-window.initVm = function() {
-
-}
+  components: { App },
+  mounted() {}
+});

@@ -108,6 +108,7 @@
         /*$(document).ready(function(){
           $('.collapse').collapse()
         })*/
+        //console.log('@json(Lang::get("app"))')
         </script>
     </body>
 </html>

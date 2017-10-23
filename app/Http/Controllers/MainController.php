@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class MainController extends Controller
 {
@@ -24,5 +25,11 @@ class MainController extends Controller
   public function index()
   {
       return view('main');
+  }
+
+  public function getTranslation(Request $request, $locale){
+      $tr = Lang::get('app', [], $locale);
+      return response()
+            ->json($tr);
   }
 }

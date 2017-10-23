@@ -25,3 +25,5 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 //Route::get('/api-login', 'Auth\ApiLoginController@apiLogin');
 Route::post('/commander-login', 'Auth\LoginController@commanderApiLogin');
+
+Route::get('/get-translation/{locale}', 'MainController@getTranslation');

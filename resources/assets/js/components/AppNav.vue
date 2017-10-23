@@ -22,7 +22,7 @@
 
 <script>
 import { EventBus } from '../helpers/event-bus.js'
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'appNav',
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     setLocale(locale) {},
-    ...mapMutations({
+    ...mapActions({
       setLocale: 'setCurrentLocale'
     }),
     getClassName(locale) {
