@@ -17,22 +17,27 @@ const i18n = new VueI18n({
 });
 
 class AppI18n {
-  constructor() {}
+  constructor() {
+    document.documentElement.lang = Vue.ls.get('currentLocale', 'en');
+  }
   getTranslation(locale) {
     let self = this;
     return new Promise(function(resolve, reject) {
       if(!window._.isEmpty(i18n.getLocaleMessage(locale))){
         resolve(i18n.getLocaleMessage(locale))
       }else{
-        window.axios.get(`/get-translation/${locale}`)
-        .then(function (response) {
-          resolve(response.data);
-        })
-        .catch(function (error) {
-          reject(error);
-        });
+          window.axios.get(`/get-translation/${locale}`)
+          .then(function (response) {
+            resolve(response.data);
+          })
+          .catch(function (error) {
+            reject(error);
+          });
       }
     })
+  }
+  setLocaleMessage(locale, translations){
+      i18n.setLocaleMessage(locale, translations);
   }
 }
 

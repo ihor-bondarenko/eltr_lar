@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column flex-lg-row trainer-module-select-cards-block justify-content-around">
-      <b-btn type="button" class="btn btn-outline-info btn-select-login-module btn-lg mb-sm-2 mb-2" v-for="(item, index) in list" :key="index" v-on:click="setView(index)">
+      <b-btn type="button" class="btn btn-outline-info btn-select-login-module btn-lg mb-sm-2 mb-2 ml-md-2" v-for="(item, index) in list" :key="index" v-on:click="setView(index)">
         <span class="oi oi-account-login"></span> <span>{{ $t(item.keyword) }}</span>
       </b-btn>
   </div>

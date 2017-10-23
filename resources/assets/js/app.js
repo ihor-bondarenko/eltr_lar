@@ -27,6 +27,12 @@ Vue.use(VueResource);
 Vue.config.productionTip = false;
 Vue.http.options.root = 'api/v1';
 
+if(window._.isObject(window._translateTrainer)) {
+  window._.forEach(window._translateTrainer, function(v, k){
+    i18n.setLocaleMessage(k, JSON.parse(v));
+  });
+}
+
 const options = {
   color: '#bffaf3',
   failedColor: '#874b4b',
@@ -49,7 +55,7 @@ Vue.use(VueProgressBar, options);
 });*/
 
 TrainerI18n.getTranslation(Vue.ls.get('currentLocale', 'en')).then(function(translations){
-  i18n.setLocaleMessage(Vue.ls.get('currentLocale', 'en'), translations);
+  TrainerI18n.setLocaleMessage(Vue.ls.get('currentLocale', 'en'), translations);
 }).catch(function(error){});
 
 const store = new Vuex.Store({
@@ -67,12 +73,13 @@ const store = new Vuex.Store({
       i18n.locale = locale;
       state.currentLocale = locale;
       Vue.ls.set('currentLocale', state.currentLocale);
+      document.documentElement.lang = state.currentLocale;
     }
   },
   actions: {
     setCurrentLocale(context, locale) {
       TrainerI18n.getTranslation(locale).then(function(translations){
-        i18n.setLocaleMessage(locale, translations);
+        TrainerI18n.setLocaleMessage(locale, translations);
         context.commit('setCurrentLocale', locale);
       }).catch(function(error){});
     }

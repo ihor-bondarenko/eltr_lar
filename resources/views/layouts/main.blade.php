@@ -101,14 +101,17 @@
         :viewer-url='@json(route("viewer"))'></app>
       </div>
         <!-- Scripts -->
+        <script>
+        (function(){
+          var _tr = {};
+          _tr['en'] = '<?php echo addslashes(json_encode(Lang::get("app", [], "en")))?>';
+          _tr['de'] = '<?php echo addslashes(json_encode(Lang::get("app", [], "de")))?>';
+          window._translateTrainer = _tr;
+        })(this);
+
+        </script>
         <script src="{{ asset('js/manifest.js') }}"></script>
         <script src="{{ asset('js/vendor.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script>
-        /*$(document).ready(function(){
-          $('.collapse').collapse()
-        })*/
-        //console.log('@json(Lang::get("app"))')
-        </script>
     </body>
 </html>
