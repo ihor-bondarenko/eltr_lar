@@ -12,7 +12,7 @@
          <div class="col-sm-12 col-lg-12 trainer-module-select-card" v-on:click="changeWindowLocation(viewerUrl)">
            <div class="card bg-light text-dark">
                  <div class="card-body">
-                     <p class="card-text text-center"><span class="oi oi-monitor"></span> <span class="text-dark">Viewer</span></p>
+                     <p class="card-text text-center"><span class="oi oi-monitor"></span> <span class="text-dark">{{ $t('trainer_tr_viewer_title') }}</span></p>
                  </div>
            </div>
          </div>
