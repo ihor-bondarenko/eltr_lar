@@ -10,17 +10,14 @@
             <span class="oi oi-account-logout"></span>
           </b-button>
         </b-nav-form>
-        <b-nav-item-dropdown id="languageSelectionList" :text="languageSelectionListTitle" right>
-          <b-dropdown-item href="#" v-for="(locale, index) in localeList" :key="index" @click="setLocale(locale)">
-            <span v-bind:class="getClassName(locale)" class="current-locale-btn text-right">{{ locale }}</span>
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
+        <lang-component></lang-component>
       </b-nav>
     </b-collapse>
    </b-navbar>
 </template>
 
 <script>
+import LangComponent  from './NavBar/Lang.vue'
 import { EventBus } from '../helpers/event-bus.js'
 import { mapActions } from 'vuex'
 
@@ -47,23 +44,11 @@ export default {
     },
     localeList() {
       return this.$store.state.locales;
-    },
-    languageSelectionListTitle() {
-      //console.log(this.$t('trainer_selected_language'));
-      return this.$t('trainer_tr_selected_language');
-    },
-    getCurrentLocale() {
-      return this.$store.state.currentLocale;
     }
   },
-  methods: {
-    setLocale(locale) {},
-    ...mapActions({
-      setLocale: 'setCurrentLocale'
-    }),
-    getClassName(locale) {
-      return 'current-locale-' + locale;
-    }
+  methods: {},
+  components: {
+    LangComponent
   }
 }
 </script>

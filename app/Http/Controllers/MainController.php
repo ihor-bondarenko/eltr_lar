@@ -29,7 +29,13 @@ class MainController extends Controller
 
   public function getTranslation(Request $request, $locale){
       $tr = Lang::get('app', [], $locale);
+      \App::setLocale($locale);
       return response()
             ->json($tr);
+  }
+  public function setLocale(Request $request, $locale){
+      \App::setLocale($locale);
+      return response()
+            ->json(["status" => 200, "message" => ""]);
   }
 }

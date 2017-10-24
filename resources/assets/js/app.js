@@ -9,29 +9,18 @@ import App from './components/App';
 import AppLogin from './components/AppLogin';
 import AppNav from './components/AppNav';
 import AppRunList from './components/AppRunList';
-//import router from './router';
-//import vuexI18n from 'vuex-i18n';
-//import VueI18n from 'vue-i18n'
 import VueResource from 'vue-resource';
 import BootstrapVue from 'bootstrap-vue';
 import VueLocalStorage from 'vue-ls';
-import { TrainerI18n, i18n } from './helpers/i18n';
-//const i18n = TrainerI18n.i18n;
-let token = document.head.querySelector('meta[name="csrf-token"]');
-//console.log(i18n);
+import { AppI18n, i18n } from './helpers/i18n';
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
-//Vue.use(VueI18n);
 Vue.use(VueResource);
-
 Vue.config.productionTip = false;
 Vue.http.options.root = 'api/v1';
 
-if(window._.isObject(window._translateTrainer)) {
-  window._.forEach(window._translateTrainer, function(v, k){
-    i18n.setLocaleMessage(k, JSON.parse(v));
-  });
-}
+const TrainerI18n = new AppI18n();
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 const options = {
   color: '#bffaf3',
@@ -49,15 +38,6 @@ const options = {
 
 Vue.use(VueProgressBar, options);
 
-/*const i18n = new VueI18n({
-  locale: Vue.ls.get('currentLocale', 'en'),
-  messages,
-});*/
-
-TrainerI18n.getTranslation(Vue.ls.get('currentLocale', 'en')).then(function(translations){
-  TrainerI18n.setLocaleMessage(Vue.ls.get('currentLocale', 'en'), translations);
-}).catch(function(error){});
-
 const store = new Vuex.Store({
   state: {
     "appStateData": {},
@@ -74,6 +54,7 @@ const store = new Vuex.Store({
       state.currentLocale = locale;
       Vue.ls.set('currentLocale', state.currentLocale);
       document.documentElement.lang = state.currentLocale;
+      TrainerI18n.setSystemLocale(locale);
     }
   },
   actions: {

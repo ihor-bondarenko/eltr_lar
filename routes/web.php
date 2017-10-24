@@ -27,3 +27,4 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/commander-login', 'Auth\LoginController@commanderApiLogin');
 
 Route::get('/get-translation/{locale}', 'MainController@getTranslation');
+Route::get('/set-locale/{locale}', 'MainController@setLocale');

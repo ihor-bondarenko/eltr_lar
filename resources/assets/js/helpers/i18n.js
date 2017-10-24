@@ -18,7 +18,23 @@ const i18n = new VueI18n({
 
 class AppI18n {
   constructor() {
+    this.init();
+  }
+  init(){
+    let self = this;
+    if(window._.isFunction(window.getI18n)) {
+      let _tr = window.getI18n();
+      if(window._.isObject(_tr)) {
+        window._.forEach(_tr, function(v, k){
+          i18n.setLocaleMessage(k, JSON.parse(v));
+        });
+      }
+      _tr = {};
+    }
     document.documentElement.lang = Vue.ls.get('currentLocale', 'en');
+    self.getTranslation(Vue.ls.get('currentLocale', 'en')).then(function(translations){
+      self.setLocaleMessage(Vue.ls.get('currentLocale', 'en'), translations);
+    }).catch(function(error){});
   }
   getTranslation(locale) {
     let self = this;
@@ -36,15 +52,16 @@ class AppI18n {
       }
     })
   }
-  setLocaleMessage(locale, translations){
+  setLocaleMessage(locale, translations) {
       i18n.setLocaleMessage(locale, translations);
+  }
+  setSystemLocale(locale) {
+    window.axios.get(`/set-locale/${locale}`)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {});
   }
 }
 
-const TrainerI18n = new AppI18n();
-
-/*export default new VueI18n({
-  locale: Vue.ls.get('currentLocale', 'en'),
-  messages,
-});*/
-export { i18n, TrainerI18n };
+export { i18n, AppI18n };

@@ -102,11 +102,14 @@
       </div>
         <!-- Scripts -->
         <script>
+
         (function(){
           var _tr = {};
           _tr['en'] = '<?php echo addslashes(json_encode(Lang::get("app", [], "en")))?>';
           _tr['de'] = '<?php echo addslashes(json_encode(Lang::get("app", [], "de")))?>';
-          window._translateTrainer = _tr;
+          window.getI18n = function(){
+            return _tr;
+          }
         })(this);
 
         </script>
